@@ -9,7 +9,7 @@ export function HowToPlay() {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button variant="outline" size="sm" className="font-medium">How to Play</Button>
+        <Button variant="outline" size="sm">How to Play</Button>
       </DialogTrigger>
       <DialogContent className="max-w-md">
         <DialogHeader>
@@ -23,26 +23,26 @@ export function HowToPlay() {
             <li>The color of the tiles will change to show how close your guess was to the word.</li>
           </ul>
           
-          <div className="space-y-3 mt-4">
+          <div className="space-y-2">
             <p className="font-bold">Examples:</p>
             
-            <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 flex items-center justify-center bg-[hsl(var(--correct))] text-white font-bold uppercase rounded">W</div>
+            <div className="flex items-center space-x-2">
+              <div className="w-10 h-10 flex items-center justify-center bg-green-500 text-white font-bold uppercase">W</div>
               <span>The letter W is in the word and in the correct spot.</span>
             </div>
             
-            <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 flex items-center justify-center bg-[hsl(var(--present))] text-white font-bold uppercase rounded">I</div>
+            <div className="flex items-center space-x-2">
+              <div className="w-10 h-10 flex items-center justify-center bg-yellow-500 text-white font-bold uppercase">I</div>
               <span>The letter I is in the word but in the wrong spot.</span>
             </div>
             
-            <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 flex items-center justify-center bg-[hsl(var(--absent))] text-white font-bold uppercase rounded">U</div>
+            <div className="flex items-center space-x-2">
+              <div className="w-10 h-10 flex items-center justify-center bg-gray-600 text-white font-bold uppercase">U</div>
               <span>The letter U is not in the word in any spot.</span>
             </div>
           </div>
           
-          <p className="mt-4 font-medium">A new WORDLE will be available each day!</p>
+          <p>A new WORDLE will be available each day!</p>
         </div>
       </DialogContent>
     </Dialog>
