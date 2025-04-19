@@ -251,26 +251,15 @@ function App() {
   
   // If game state is not loaded yet, show loading
   if (!gameState) {
-    return (
-      <div className="flex items-center justify-center h-screen bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
-        <div className="text-center">
-          <h1 className="text-3xl font-bold mb-4 game-title">WORDLE</h1>
-          <div className="flex space-x-2 justify-center">
-            <div className="w-3 h-3 bg-[hsl(var(--correct))] rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></div>
-            <div className="w-3 h-3 bg-[hsl(var(--present))] rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></div>
-            <div className="w-3 h-3 bg-[hsl(var(--absent))] rounded-full animate-bounce" style={{ animationDelay: '300ms' }}></div>
-          </div>
-        </div>
-      </div>
-    );
+    return <div className="flex items-center justify-center h-screen">Loading...</div>;
   }
   
   return (
-    <div className="min-h-screen flex flex-col items-center p-4 bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
-      <header className="w-full max-w-lg flex items-center justify-between mb-6 mt-4">
+    <div className="min-h-screen flex flex-col items-center p-4 bg-gray-50 dark:bg-gray-900">
+      <header className="w-full max-w-lg flex items-center justify-between mb-6">
         <HowToPlay />
         
-        <h1 className="text-3xl font-bold text-center game-title">WORDLE</h1>
+        <h1 className="text-3xl font-bold text-center">WORDLE</h1>
         
         <Leaderboard currentDate={gameState.date} />
       </header>
@@ -301,10 +290,6 @@ function App() {
         onSubmit={handleNameSubmit}
         isOpen={showNameInput}
       />
-      
-      <footer className="mt-8 mb-4 text-center text-sm text-gray-500">
-        <p>A new word every day!</p>
-      </footer>
       
       <Toaster />
     </div>
