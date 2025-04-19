@@ -33,9 +33,9 @@ export function Keyboard({ onKeyPress, letterStates }: KeyboardProps) {
   }, [onKeyPress]);
 
   return (
-    <div className="w-full max-w-lg mx-auto keyboard">
+    <div className="w-full max-w-lg mx-auto">
       {rows.map((row, rowIndex) => (
-        <div key={rowIndex} className="flex justify-center mb-2 gap-1.5">
+        <div key={rowIndex} className="flex justify-center mb-2 gap-1">
           {row.map((key) => {
             const state = letterStates[key] || 'unused';
             
@@ -44,14 +44,14 @@ export function Keyboard({ onKeyPress, letterStates }: KeyboardProps) {
                 key={key}
                 onClick={() => onKeyPress(key)}
                 className={cn(
-                  "rounded font-bold uppercase flex items-center justify-center transition-colors key shadow-md",
+                  "rounded font-bold uppercase flex items-center justify-center transition-colors",
                   key === 'enter' || key === 'backspace' 
-                    ? "px-3 h-14 text-xs sm:text-sm" 
-                    : "w-8 h-14 sm:w-10",
-                  state === 'correct' && "bg-[hsl(var(--correct))] text-white",
-                  state === 'present' && "bg-[hsl(var(--present))] text-white",
-                  state === 'absent' && "bg-[hsl(var(--absent))] text-white",
-                  state === 'unused' && "bg-[hsl(var(--key-bg))] text-[hsl(var(--key-text))] hover:bg-opacity-80"
+                    ? "px-3 h-14" 
+                    : "w-10 h-14",
+                  state === 'correct' && "bg-green-500 text-white",
+                  state === 'present' && "bg-yellow-500 text-white",
+                  state === 'absent' && "bg-gray-600 text-white",
+                  state === 'unused' && "bg-gray-300 text-gray-800 hover:bg-gray-400"
                 )}
               >
                 {key === 'backspace' ? <FiDelete size={20} /> : key}

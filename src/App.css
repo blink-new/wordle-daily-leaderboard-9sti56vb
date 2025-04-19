@@ -48,20 +48,6 @@
   }
 }
 
-@keyframes pop {
-  0% {
-    transform: scale(0.8);
-    opacity: 0;
-  }
-  50% {
-    transform: scale(1.1);
-  }
-  100% {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
-
 .flip {
   animation: flip 0.5s ease;
 }
@@ -72,73 +58,4 @@
 
 .shake {
   animation: shake 0.5s ease;
-}
-
-.pop {
-  animation: pop 0.3s ease;
-}
-
-/* Game container */
-.game-container {
-  max-width: 500px;
-  margin: 0 auto;
-}
-
-/* Tile animations */
-.tile {
-  transition: all 0.2s;
-}
-
-.tile-reveal {
-  transform-style: preserve-3d;
-  transition: transform 0.6s;
-}
-
-.tile-reveal.flipped {
-  transform: rotateX(180deg);
-}
-
-/* Keyboard styling */
-.keyboard {
-  user-select: none;
-}
-
-.key {
-  transition: all 0.2s ease;
-}
-
-.key:active {
-  transform: scale(0.95);
-}
-
-/* Game board styling */
-.board-container {
-  display: grid;
-  grid-template-rows: repeat(6, 1fr);
-  gap: 5px;
-  margin-bottom: 30px;
-}
-
-.board-row {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 5px;
-}
-
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: hsl(var(--background));
-}
-
-::-webkit-scrollbar-thumb {
-  background: hsl(var(--muted-foreground) / 0.5);
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: hsl(var(--muted-foreground) / 0.8);
 }
