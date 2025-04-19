@@ -31,9 +31,9 @@ export function GameBoard({ attempts, currentAttempt, solution, evaluations }: G
   });
 
   return (
-    <div className="grid gap-1 mb-4">
+    <div className="grid gap-2 mb-6">
       {board.map((row, rowIndex) => (
-        <div key={rowIndex} className="grid grid-cols-5 gap-1">
+        <div key={rowIndex} className="grid grid-cols-5 gap-2">
           {row.map((letter, colIndex) => {
             // Determine the state of this tile
             let state: LetterState | undefined;
@@ -49,6 +49,8 @@ export function GameBoard({ attempts, currentAttempt, solution, evaluations }: G
                 state={state}
                 isRevealing={rowIndex === attempts.length - 1}
                 position={colIndex}
+                isCurrentRow={rowIndex === attempts.length}
+                hasLetter={!!letter}
               />
             );
           })}
@@ -63,9 +65,11 @@ interface TileProps {
   state?: LetterState;
   isRevealing?: boolean;
   position: number;
+  isCurrentRow: boolean;
+  hasLetter: boolean;
 }
 
-function Tile({ letter, state, isRevealing = false, position }: TileProps) {
+function Tile({ letter, state, isRevealing = false, position, isCurrentRow, hasLetter }: TileProps) {
   const [revealed, setRevealed] = useState(!isRevealing);
   
   useEffect(() => {
@@ -81,11 +85,12 @@ function Tile({ letter, state, isRevealing = false, position }: TileProps) {
   return (
     <div 
       className={cn(
-        "w-14 h-14 flex items-center justify-center text-2xl font-bold border-2 uppercase transition-all duration-500",
-        letter ? "border-gray-400" : "border-gray-300",
-        revealed && state === 'correct' && "bg-green-500 text-white border-green-500",
-        revealed && state === 'present' && "bg-yellow-500 text-white border-yellow-500",
-        revealed && state === 'absent' && "bg-gray-600 text-white border-gray-600",
+        "w-14 h-14 sm:w-16 sm:h-16 flex items-center justify-center text-2xl font-bold border-2 uppercase transition-all duration-500 rounded",
+        !hasLetter && "border-gray-300 dark:border-gray-700",
+        hasLetter && isCurrentRow && "border-gray-500 dark:border-gray-400 pop",
+        revealed && state === 'correct' && "bg-[hsl(var(--correct))] text-white border-[hsl(var(--correct))]",
+        revealed && state === 'present' && "bg-[hsl(var(--present))] text-white border-[hsl(var(--present))]",
+        revealed && state === 'absent' && "bg-[hsl(var(--absent))] text-white border-[hsl(var(--absent))]",
         isRevealing && revealed && "scale-105",
         isRevealing && !revealed && "scale-100"
       )}
